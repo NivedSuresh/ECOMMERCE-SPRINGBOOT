@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/Admin/src/main/resources/scripts/scripts.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/Repository/UserRepos/CategoryRepo.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/Repository/UserRepos/ProductRepo.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/Repository/UserRepos/WishlistRepo.java" dialect="GenericSQL" />
+  </component>
+</project>
