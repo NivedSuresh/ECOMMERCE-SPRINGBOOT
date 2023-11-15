@@ -1,6 +1,7 @@
 /Users/apple/Documents/aws/Vnilusso/Admin/src/main/java/com/ecommerce/admin/Auth/CustomAuthenticationDetailsSource.java
 /Users/apple/Documents/aws/Vnilusso/Admin/src/main/java/com/ecommerce/admin/Controller/CouponController.java
 /Users/apple/Documents/aws/Vnilusso/Admin/src/main/java/com/ecommerce/admin/Controller/LoginController.java
+/Users/apple/Documents/aws/Vnilusso/Admin/src/main/java/com/ecommerce/admin/Config/MvcConfig.java
 /Users/apple/Documents/aws/Vnilusso/Admin/src/main/java/com/ecommerce/admin/Auth/CustomAuthenticationDetails.java
 /Users/apple/Documents/aws/Vnilusso/Admin/src/main/java/com/ecommerce/admin/Controller/CustomerController.java
 /Users/apple/Documents/aws/Vnilusso/Admin/src/main/java/com/ecommerce/admin/AdminApplication.java
