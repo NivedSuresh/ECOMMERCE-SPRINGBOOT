@@ -48,12 +48,12 @@ public class AdminSecurityConfiguration {
                             .loginPage("/admin/login")
                             .usernameParameter("username")
                             .passwordParameter("password")
-                            .loginProcessingUrl("/authenticate")
+                            .loginProcessingUrl("/admin/authenticate")
                             .successHandler(successHandler)
                         .authenticationDetailsSource(customAuthenticationDetailsSource))
 
                 .logout(logout -> logout
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/admin/logout"))
                         .logoutSuccessUrl("/admin/login?logout")
                         .invalidateHttpSession(true))
 
