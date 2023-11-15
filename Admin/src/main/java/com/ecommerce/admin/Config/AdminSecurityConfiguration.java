@@ -7,8 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -30,7 +34,7 @@ public class AdminSecurityConfiguration {
 
         http.csrf(csrf-> csrf
                 .requireCsrfProtectionMatcher(new AntPathRequestMatcher("/admin/authenticate"))
-                .ignoringRequestMatchers("/", "/product-details/**"));
+                .ignoringRequestMatchers("/admin", "/product-details/**"));
 
         http.authorizeHttpRequests(authorize -> authorize
                                 .requestMatchers("/static/**","/css/**", "/fonts/**", "/imgs/**","/js/**","/sass/**", "/product-images").permitAll()
