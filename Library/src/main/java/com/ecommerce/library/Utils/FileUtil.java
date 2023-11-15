@@ -15,7 +15,7 @@ import java.util.UUID;
 @Component
 public class FileUtil {
 
-    private final String IMAGE_UPLOAD_FOLDER = "/home/ubuntu/Vnilusso/Library/src/main/resources/static/product-images";
+    private final String IMAGE_UPLOAD_FOLDER = "/Users/apple/Documents/aws/Vnilusso/Library/src/main/resources/static/product-images";
 
     public List<String> uploadToLocalAndReadyImages(List<MultipartFile> multipartFiles) {
 
@@ -45,6 +45,7 @@ public class FileUtil {
             }
         }
         catch(Exception e){
+            e.printStackTrace();
             deleteImagesFromFile(readyImages);
             throw new ImageProcessException("Image process Exception", "There was an Issue processing the Images, try again after sometime.");
         }

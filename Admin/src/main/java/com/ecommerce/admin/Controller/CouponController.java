@@ -12,7 +12,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/admin/coupons")
+@RequestMapping("/coupons")
 public class CouponController {
     CouponService couponService;
 
@@ -40,12 +40,9 @@ public class CouponController {
     @PostMapping("/add")
     public String addCoupon(@Valid CouponDto coupon, BindingResult result,
                             HttpSession session){
-        for(int i=0 ;i<10 ; i++){
-            System.out.println(coupon);
-        }
         if(result.hasErrors()) session.setAttribute("error", result);
         else couponService.save(couponService.dtoToEntity(coupon, null));
-        return "redirect:/admin/coupons";
+        return "redirect:/coupons";
     }
 
     @GetMapping("/edit/{id}")
@@ -62,12 +59,11 @@ public class CouponController {
     @PostMapping("/update/{id}")
     public String updateCoupon(@PathVariable Long id,@Valid CouponDto couponDto, BindingResult result,
                                HttpSession session){
-        System.out.println(couponDto);
         if(result.hasErrors()){
             session.setAttribute("addCoupon", result);
-            return "redirect:/admin/coupons/edit/"+id+"?error";
+            return "redirect:/coupons/edit/"+id+"?error";
         }
         else couponService.save(couponService.dtoToEntity(couponDto, id));
-        return "redirect:/admin/coupons/edit/"+id+"?success";
+        return "redirect:/coupons/edit/"+id+"?success";
     }
 }

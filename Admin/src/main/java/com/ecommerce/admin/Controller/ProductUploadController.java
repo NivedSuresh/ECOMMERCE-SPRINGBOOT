@@ -13,7 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/admin/add-product")
+@RequestMapping("/add-product")
 public class ProductUploadController {
 
     CategoryRepo categoryRepo;
@@ -49,7 +49,7 @@ public class ProductUploadController {
         session.setAttribute("info", productDto.getBrand()
                 +" - "+productDto.getName()+" - "+productDto.getSize()+" added for price "+productDto.getSalePrice());
 
-        return "redirect:/admin/add-product?success";
+        return "redirect:/add-product?success";
     }
 
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Objects;
 
 @Controller
-@RequestMapping("/admin/order/")
+@RequestMapping("/order/")
 public class OrderController {
 
     RazorPayOrderService razorPayOrderService;
@@ -31,16 +31,16 @@ public class OrderController {
     @PostMapping("/update/{id}")
     public String updateStatus(@PathVariable("id") Long id, @RequestParam("status") String status){
         if(Objects.equals(orderService.getOrderStatus(id), status))
-            return "redirect:/admin/order/"+id;
+            return "redirect:/order/"+id;
         if(orderService.existsById(id) && !orderService.isOrderCancelled(id)){
             if(Objects.equals(status, "CANCELLED") &&
                     Objects.equals(orderService.getOrderPaymentMethod(id), "RAZORPAY")){
                 razorPayOrderService.initiateRefund(id, true, false);
             }
             orderService.setOrderStatus(status.toUpperCase(), id, orderService.findById(id));
-            return "redirect:/admin/order/"+id+"?success";
+            return "redirect:/order/"+id+"?success";
         }
-        return "redirect:/admin/order/"+id+"?error";
+        return "redirect:/order/"+id+"?error";
     }
 
     @Transactional
@@ -58,7 +58,7 @@ public class OrderController {
                 orderService.initiateRefundForCodReturn(orderId);
         }
 
-        return "redirect:/admin/order/"+orderId;
+        return "redirect:/order/"+orderId;
     }
 
 

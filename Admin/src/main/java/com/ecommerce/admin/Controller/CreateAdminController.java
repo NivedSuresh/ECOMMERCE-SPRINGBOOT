@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Objects;
 
 @Controller
-@RequestMapping("/admin")
 public class CreateAdminController {
 
     private final AdminService adminService;
@@ -62,7 +61,7 @@ public class CreateAdminController {
             if(Objects.equals(adminDto.getPassword(), adminDto.getRepeatPassword())){
                 adminDto.setPassword(passwordEncoder.encode(adminDto.getPassword()));
                 adminService.save(adminDto);
-                return "redirect:/admin/create?success";
+                return "redirect:/create?success";
             }else{
                 model.addAttribute("error", "password input should match");
             }

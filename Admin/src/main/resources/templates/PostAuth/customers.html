@@ -13,8 +13,8 @@
   <div th:if="${info!=null && info.isEmpty()==false}" th:text="${info}" class="alert-primary d-flex p-1 mb-2 justify-content-center"></div>
   <form method="post">
     <input th:value="${_csrf.getToken()}" type="hidden" name="_csrf">
-    <button class="btn alert-success" th:formaction="@{/admin/customers/enable-referral}">Enable Referral</button>
-    <button class="btn alert-warning" th:formaction="@{/admin/customers/disable-referral}">Disable Referral</button>
+    <button class="btn alert-success" th:formaction="@{/customers/enable-referral}">Enable Referral</button>
+    <button class="btn alert-warning" th:formaction="@{/customers/disable-referral}">Disable Referral</button>
   </form>
 
   <table class="table-responsive">
@@ -38,8 +38,8 @@
       <td class="p-4">
         <form method="post">
           <input type="hidden" name="_csrf"  th:value="${_csrf.getToken()}">
-          <button class="btn btn-danger" th:if="${!customer.isBlocked()}" th:formaction="@{/admin/customers/block/{id}(id=${customer.id})}">Block</button>
-          <button class="btn btn-warning" th:if="${customer.isBlocked()}" th:formaction="@{/admin/customers/unblock/{id}(id=${customer.id})}">Un-Block</button>
+          <button class="btn btn-danger" th:if="${!customer.isBlocked()}" th:formaction="@{/customers/block/{id}(id=${customer.id})}">Block</button>
+          <button class="btn btn-warning" th:if="${customer.isBlocked()}" th:formaction="@{/customers/unblock/{id}(id=${customer.id})}">Un-Block</button>
         </form>
       </td>
     </tr>

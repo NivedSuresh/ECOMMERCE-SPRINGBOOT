@@ -8,9 +8,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/imgs/theme/favicon.svg">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/imgs/theme/favicon.svg}">
     <!-- Template CSS -->
-    <link rel="stylesheet" type="text/css"  href="/css/main.css?v=3.4">
+    <link rel="stylesheet" type="text/css"  th:href="@{/css/main.css?v=3.4}">
 </head>
 
 <body>
@@ -70,7 +70,7 @@
 
     <aside th:fragment="aside" class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
-            <a th:href="@{/admin/dashboard}" class="brand-wrap">
+            <a th:href="@{/dashboard}" class="brand-wrap">
                 <img th:src="@{/imgs/theme/logo.svg}" class="logo" alt="Evara Dashboard">
             </a>
             <div>
@@ -80,39 +80,39 @@
         <nav>
             <ul class="menu-aside">
                 <li class="menu-item active">
-                    <a class="menu-link" th:href="@{/admin/dashboard}"> <i class="icon material-icons md-home"></i>
+                    <a class="menu-link" th:href="@{/dashboard}"> <i class="icon material-icons md-home"></i>
                         <span class="text">Dashboard</span>
                     </a>
                 </li>
                 <li class="menu-item active">
-                    <a class="menu-link" th:href="@{/admin/products}"> <i class="icon material-icons md-shopping_bag"></i>
+                    <a class="menu-link" th:href="@{/products}"> <i class="icon material-icons md-shopping_bag"></i>
                         <span class="text">Products</span>
                     </a>
                 </li>
                 <li>
-                    <a class="menu-link" th:href="@{/admin/add-product}">
+                    <a class="menu-link" th:href="@{/add-product}">
                         <i class="icon material-icons md-add_box"></i>
                         <span>Add product</span>
                     </a>
                 </li>
                 <li>
-                    <a class="menu-link" th:href="@{/admin/coupons}">
+                    <a class="menu-link" th:href="@{/coupons}">
                         <i class="icon material-icons md-monetization_on"></i>
                         <span>Coupons</span>
                     </a>
                 </li>
                 <li>
-                    <a class="menu-link" th:href="@{/admin/customers}">
+                    <a class="menu-link" th:href="@{/customers}">
                         <i class="icon material-icons md-person"></i>
                         <span>Users</span>
                     </a>
                 </li>
                 <li>
-                    <a class="menu-link" th:href="@{/admin/categories}"> <i class="icon material-icons md-stars"></i>
+                    <a class="menu-link" th:href="@{/categories}"> <i class="icon material-icons md-stars"></i>
                         <span class="text">Categories</span> </a>
                 </li>
                 <li>
-                    <a th:href="@{/admin/statistics}" class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
+                    <a th:href="@{/statistics}" class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
                         <span class="text">Statistics</span>
                     </a>
                 </li>
@@ -154,7 +154,7 @@
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a th:href="@{/}"><img th:src="@{/imgs/theme/logo.svg}" alt="logo"></a>
+                    <a th:href="@{/static}"><img th:src="@{/imgs/theme/logo.svg}" alt="logo"></a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-3 d-flex">
@@ -219,7 +219,7 @@
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                         <nav>
                             <ul>
-                                <li><a class="active" th:href="@{/}">Home</a></li>
+                                <li><a class="active" th:href="@{/static}">Home</a></li>
                                 <li><a th:href="@{/shop}">Shop</a></li>
                                 <li><a th:href="@{/contact}">Contact</a></li>
                                 <li sec:authorize="isAuthenticated()"><a th:href="@{/orders}">Orders</a></li>

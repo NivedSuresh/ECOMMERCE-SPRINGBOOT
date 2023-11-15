@@ -26,7 +26,7 @@
 
 
                     <!--form for data updation excluding images-->
-                    <form class="col-lg-6" method="post" th:action="@{/admin/products/edit/save/{id}(id=${product.id})}">
+                    <form class="col-lg-6" method="post" th:action="@{/products/edit/save/{id}(id=${product.id})}">
                         <div class="card mb-4">
                             <div class="card-header d-flex justify-content-between">
                                 <h4>Product Details</h4>
@@ -129,7 +129,7 @@
                     <!--form for image updation-->
                     <div class="col-lg-3 ml-15">
 
-                        <form th:action="@{/admin/products/edit/upload-image/{id}(id=${product.getId()})}"
+                        <form th:action="@{/products/edit/upload-image/{id}(id=${product.getId()})}"
                              method="post" class="card mb-4" enctype="multipart/form-data">
                             <div class="card-header">
                                 <h4>Add Media</h4>
@@ -156,7 +156,7 @@
                         <input type="hidden" th:value="${_csrf.getToken()}" name="_csrf">
                         <img th:src="@{'/product-images/' + ${image}}">
                         <p th:text="${image}"></p>
-                        <button th:formaction="@{'/admin/products/delete/' + ${product.getId()} + '/' + ${image}}"
+                        <button th:formaction="@{'/products/delete/' + ${product.getId()} + '/' + ${image}}"
                                 onclick="return confirm('Are you sure you want to proceed?');" class="btn btn-danger mt-2">Remove</button>
                     </form>
                 </div>

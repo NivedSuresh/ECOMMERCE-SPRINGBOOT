@@ -5,7 +5,7 @@
 <div class="screen-overlay"></div>
 <aside class="navbar-aside" id="offcanvas_aside">
     <div class="aside-top">
-        <a th:href="@{/admin/dashboard}" class="brand-wrap">
+        <a th:href="@{/dashboard}" class="brand-wrap">
             <img th:src="@{imgs/theme/logo.svg}" class="logo" alt="Evara Dashboard">
         </a>
         <div>
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="container-fluid">
-            <form id="myForm" th:action="@{/admin/add-product}" method="post"
+            <form id="myForm" th:action="@{/add-product}" method="post"
                   enctype="multipart/form-data">
                 <fieldset>
                     <!-- Form Name -->

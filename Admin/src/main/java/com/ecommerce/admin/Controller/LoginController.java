@@ -18,7 +18,6 @@ import java.security.Principal;
 import java.util.Objects;
 
 @Controller
-@RequestMapping("/admin")
 public class LoginController {
 
     OtpRepo otpRepo;
@@ -60,7 +59,7 @@ public class LoginController {
             model.addAttribute("info", "Otp sent to "+username);
             return loginPage(model, username);
         }
-        return "redirect:/admin/login?invalid";
+        return "redirect:/login?invalid";
     }
 
     @PostMapping("/forgot-password")
@@ -80,7 +79,7 @@ public class LoginController {
             model.addAttribute("info", "Token to reset password has been sent to "+username);
             return loginPage(model, "");
         }
-        return "redirect:/admin/forgot-password?invalid-user";
+        return "redirect:/forgot-password?invalid-user";
     }
 
 
@@ -91,7 +90,7 @@ public class LoginController {
             model.addAttribute("token", tokenCode);
             return "/reset-password";
         }
-        return "redirect:/admin/login?error";
+        return "redirect:/login?error";
     }
 
     @Transactional

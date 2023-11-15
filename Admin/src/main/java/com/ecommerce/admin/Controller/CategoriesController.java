@@ -10,7 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/admin/categories")
+@RequestMapping("/categories")
 @Controller
 public class CategoriesController {
 
@@ -34,7 +34,7 @@ public class CategoriesController {
 
     @GetMapping("/create")
     public String viewCategories2(){
-        return "redirect:/admin/categories";
+        return "redirect:/categories";
     }
 
     @PostMapping("/create")
@@ -48,7 +48,7 @@ public class CategoriesController {
         }
         categoryDto.setDeleted(isDeleted);
         categoryService.saveCategory(categoryDto);
-        return "redirect:/admin/categories?success";
+        return "redirect:/categories?success";
     }
 
     @PostMapping("/delete/{id}")
@@ -56,7 +56,7 @@ public class CategoriesController {
         if(categoryService.existsById(id)){
             categoryService.softDelete(id);
         }
-        return "redirect:/admin/categories";
+        return "redirect:/categories";
     }
 
     @PostMapping("/enable/{id}")
@@ -64,22 +64,20 @@ public class CategoriesController {
         if(categoryService.existsById(id)){
             categoryService.enableCategory(id);
         }
-        return "redirect:/admin/categories";
+        return "redirect:/categories";
     }
 
     @PostMapping("/apply_off/{id}")
     public String applyOffForCategory(@PathVariable Long id,  Double offPercentage){
         categoryService.applyDiscountForCategory(id, offPercentage);
-        return "redirect:/admin/categories";
+        return "redirect:/categories";
     }
 
     @PostMapping("reset_off/{id}")
     public String resetDiscount(@PathVariable("id") Long id){
         categoryService.resetDiscountForCategory(id);
-        return "redirect:/admin/categories";
+        return "redirect:/categories";
     }
-
-
 
 
 }

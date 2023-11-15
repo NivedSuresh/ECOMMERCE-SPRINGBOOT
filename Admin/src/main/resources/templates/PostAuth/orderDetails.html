@@ -30,7 +30,7 @@
                             </span> <br>
                             <small class="text-muted" th:text="${'Order ID : '+order.getId()}"></small>
                         </div>
-                        <form method="post" th:action="@{/admin/order/update/{id}(id=${order.getId()})}" th:if="${order.getOrderStatus()!='CANCELLE'}" class="col-lg-6 col-md-6 ms-auto text-md-end">
+                        <form method="post" th:action="@{/order/update/{id}(id=${order.getId()})}" th:if="${order.getOrderStatus()!='CANCELLE'}" class="col-lg-6 col-md-6 ms-auto text-md-end">
                             <label>
                                 <select name="status" class="form-select d-inline-block mb-lg-0 mb-15 mw-200">
                                     <option th:value="${order.getOrderStatus()}" th:text="${'Current : '+order.getOrderStatus()}"></option>
@@ -106,7 +106,7 @@
                                     <tbody>
                                         <tr th:each="item :${order.getOrderItems()}">
                                             <td>
-                                                <a class="itemside" th:href="@{/admin/products/edit/{id}(id=${item.getProduct().getId()})}">
+                                                <a class="itemside" th:href="@{/products/edit/{id}(id=${item.getProduct().getId()})}">
                                                     <div class="left">
                                                         <img th:src="@{'/product-images/' + ${item.getProduct().getImagesUrls().get(0)}}" width="40" height="40" class="img-xs" alt="Item"></div>
                                                     <div class="info" th:text="${item.getProduct().getName()}">  </div>
@@ -139,7 +139,7 @@
                                 </div>
 
                             </div>
-                            <form method="post" th:action="@{/admin/order/accept_return_refund/{id}(id=${order.getId()})}" th:if="${order.getReturnRequest()!=null && order.getReturnRequest().getReturnRequest()==true &&
+                            <form method="post" th:action="@{/order/accept_return_refund/{id}(id=${order.getId()})}" th:if="${order.getReturnRequest()!=null && order.getReturnRequest().getReturnRequest()==true &&
                             order.getPayment().getStatus()=='PAID' && !order.getReturnRequest().getReturnAccepted()}" class="h-25 pt-4">
                                 <button class="btn btn-primary">Initiate Refund</button>
                             </form>

@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
 
-@RequestMapping("/admin/dashboard")
+@RequestMapping("/dashboard")
 @Controller
 public class DashboardController {
 
@@ -61,7 +61,7 @@ public class DashboardController {
     @PostMapping("/orders/filter")
     public String filterOrders(OrderFilterDto filterDto, RedirectAttributes attributes){
         attributes.addAttribute("orders",orderService.filterOrders(filterDto));
-        return "redirect:/admin/dashboard";
+        return "redirect:/dashboard";
     }
 
 }

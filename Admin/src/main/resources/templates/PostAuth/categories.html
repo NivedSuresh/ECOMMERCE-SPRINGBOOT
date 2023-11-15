@@ -13,7 +13,7 @@
                     <h2 class="content-title card-title">Categories </h2>
                     <p>Add, edit or delete a category</p>
                 </div>
-                <form th:action="@{/admin/categories/search}" class="d-flex" method="post">
+                <form th:action="@{/categories/search}" class="d-flex" method="post">
                     <input type="text" placeholder="Search Categories" class="form-control bg-white">
                     <button type="submit" class="btn btn-primary" style="height: 5vh">Search</button>
                 </form>
@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
-                            <form th:action="@{/admin/categories/create}" method="post">
+                            <form th:action="@{/categories/create}" method="post">
                                 <div class="mb-4">
                                     <label class="form-label">Name</label>
                                     <input type="text" placeholder="Type here" class="form-control" name="category" />
@@ -74,18 +74,18 @@
                                             <td th:text="${category.getProducts()}"></td>
                                             <td class="text-end">
                                                 <form method="post" style="text-align: center">
-                                                    <button th:if="${category.isDeleted()}" class="btn btn-success" th:formaction="@{/admin/categories/enable/{id}(id=${category.getId()})}">Enable</button>
-                                                    <button th:if="${!category.isDeleted()}" class="btn btn-warning" onclick="return confirmDelete();" th:formaction="@{/admin/categories/delete/{id}(id=${category.getId()})}">Disable</button>
+                                                    <button th:if="${category.isDeleted()}" class="btn btn-success" th:formaction="@{/categories/enable/{id}(id=${category.getId()})}">Enable</button>
+                                                    <button th:if="${!category.isDeleted()}" class="btn btn-warning" onclick="return confirmDelete();" th:formaction="@{/categories/delete/{id}(id=${category.getId()})}">Disable</button>
                                                 </form>
                                             </td>
                                             <td>
-                                                <form method="post" th:action="@{/admin/categories/apply_off/{id}(id=${category.getId()})}">
+                                                <form method="post" th:action="@{/categories/apply_off/{id}(id=${category.getId()})}">
                                                     <input name="offPercentage" th:value="${category.getDiscountPercentage()}" style="width: 6vh; border-radius: 5px" max="80" type="number">
                                                     <button class="btn btn-outline-success">✔️</button>
                                                 </form>
                                             </td>
                                             <td>
-                                                <form method="post" th:action="@{/admin/categories/reset_off/{id}(id=${category.getId()})}">
+                                                <form method="post" th:action="@{/categories/reset_off/{id}(id=${category.getId()})}">
                                                     <button class=" btn btn-outline-danger">X</button>
                                                     <p th:text="${category.getDiscountPercentage()+'%'}"></p>
                                                 </form>

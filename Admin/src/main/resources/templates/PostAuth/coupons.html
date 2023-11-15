@@ -13,7 +13,7 @@
                     <h2 class="content-title card-title">Coupons </h2>
                     <p>Add, edit or disable a coupon</p>
                 </div>
-                <form th:action="@{/admin/coupons/search}" class="d-flex" method="post">
+                <form th:action="@{/coupons/search}" class="d-flex" method="post">
                     <input type="text" placeholder="Search Categories" class="form-control bg-white">
                     <button type="submit" class="btn btn-primary" style="height: 5vh">Search</button>
                 </form>
@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
-                            <form th:action="@{/admin/coupons/add}" method="post">
+                            <form th:action="@{/coupons/add}" method="post">
                                 <div class="mb-4">
                                     <label class="form-label">Name</label>
                                     <input type="text" placeholder="Type here" class="form-control" name="coupon" />
@@ -104,10 +104,7 @@
                                             <td th:text="${coupon.getExpiryDate()}"></td>
                                             <td class="text-end">
                                                 <form style="text-align: center">
-                                                    <button th:if="${!coupon.getIsActive()}" class="btn btn-outline-success" th:formaction="@{/admin/coupons/enable/{id}(id=${coupon.getId()})}">E️</button>
-                                                    <button th:if="${coupon.getIsActive()}" class="btn btn-outline-warning" onclick="return confirmDelete();" th:formaction="@{/admin/coupons/disable/{id}(id=${coupon.getId()})}">D</button>
-                                                    <input type="hidden" name="_csrf" th:value="${_csrf.getToken()}">
-                                                    <button class="btn btn-outline-primary" th:formaction="@{/admin/coupons/edit/{id}(id=${coupon.getId()})}">Edit</button>
+                                                    <button class="btn btn-outline-primary" th:formaction="@{/coupons/edit/{id}(id=${coupon.getId()})}">Edit</button>
                                                 </form>
                                             </td>
                                         </tr>

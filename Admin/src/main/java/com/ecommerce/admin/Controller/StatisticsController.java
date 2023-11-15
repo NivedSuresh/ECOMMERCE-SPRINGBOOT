@@ -15,7 +15,7 @@ public class StatisticsController {
         this.statisticsService = statisticsService;
     }
 
-    @GetMapping("/admin/statistics")
+    @GetMapping("/statistics")
     public String getStatistics(Model model){
         StatisticsDto statisticsDto = statisticsService.getAllStatistics();
         model.addAttribute("statistics", statisticsDto);

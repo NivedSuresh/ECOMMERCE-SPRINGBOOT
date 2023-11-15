@@ -12,7 +12,7 @@
                 <div>
                     <h2 class="content-title card-title">Edit Coupon<span style="font-size: medium" th:text="${' ('+coupon.getCoupon()+')'}"></span></h2>
                 </div>
-                <form th:action="@{/admin/coupons/search}" class="d-flex" method="post">
+                <form th:action="@{/coupons/search}" class="d-flex" method="post">
                     <input type="text" placeholder="Search Categories" class="form-control bg-white">
                     <button type="submit" class="btn btn-primary" style="height: 5vh">Search</button>
                 </form>
@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col-md-3">
-                            <form sec:authorize="isAuthenticated()" th:action="@{/admin/coupons/update/{id}(id=${coupon.getId()})}" method="post">
+                            <form sec:authorize="isAuthenticated()" th:action="@{/coupons/update/{id}(id=${coupon.getId()})}" method="post">
                                 <div class="mb-4">
                                     <label class="form-label">Name</label>
                                     <input th:value="${coupon.getCoupon()}" type="text" placeholder="Type here" class="form-control" name="coupon" />

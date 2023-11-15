@@ -33,33 +33,35 @@ public class AdminSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.csrf(csrf-> csrf
-                .requireCsrfProtectionMatcher(new AntPathRequestMatcher("/admin/authenticate"))
-                .ignoringRequestMatchers("/admin", "/product-details/**"));
+                .requireCsrfProtectionMatcher(new AntPathRequestMatcher("/authenticate"))
+        );
 
         http.authorizeHttpRequests(authorize -> authorize
-                                .requestMatchers("/static/**","/css/**", "/fonts/**", "/imgs/**","/js/**","/sass/**", "/product-images").permitAll()
-                                .requestMatchers("/admin/send-otp","/admin/forgot-password", "admin/login",
-                                        "/admin/send-token", "/admin/reset-password").permitAll()
-                                .requestMatchers("/admin/forgot-password").permitAll()
-                                .anyRequest().hasAuthority("ADMIN"))
+                .requestMatchers("/static/**","/css/**", "/fonts/**", "/imgs/**","/js/**","/sass/**", "/product-images").permitAll()
+                .requestMatchers("/send-otp","/forgot-password", "/login",
+                        "/send-token", "/reset-password").permitAll()
+                .requestMatchers("/forgot-password").permitAll()
+                .anyRequest().hasAuthority("ADMIN"));
 
 
-                .formLogin(formLogin -> formLogin
-                            .loginPage("/admin/login")
-                            .usernameParameter("username")
-                            .passwordParameter("password")
-                            .loginProcessingUrl("/admin/authenticate")
-                            .successHandler(successHandler)
-                        .authenticationDetailsSource(customAuthenticationDetailsSource))
+        http.formLogin(formLogin -> formLogin
+                .loginPage("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .loginProcessingUrl("/authenticate")
+                .successHandler(successHandler)
+                .authenticationDetailsSource(customAuthenticationDetailsSource));
 
-                .logout(logout -> logout
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/admin/logout"))
-                        .logoutSuccessUrl("/admin/login?logout")
-                        .invalidateHttpSession(true))
+        http.logout(logout -> logout
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout")
+                .invalidateHttpSession(true));
 
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-                        .invalidSessionUrl("/admin/login?expired"));
-
+        http.sessionManagement(session -> session
+                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+                .invalidSessionUrl("/login?expired")
+                .maximumSessions(1)
+        );
 
         return http.build();
     }

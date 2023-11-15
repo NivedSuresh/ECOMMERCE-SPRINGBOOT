@@ -1,22 +1,7 @@
 <!DOCTYPE HTML>
 <html class="no-js" lang="en">
 
-<head th:fragment="head">
-    <meta charset="utf-8">
-    <title>Admin Dashboard</title>
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="">
-    <meta property="og:type" content="">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" th:href="@{/imgs/theme/favicon.svg}">
-    <!-- Template CSS -->
-    <link type="text/css" rel="stylesheet" href="/css/main.css">
-</head>
+<head th:replace="~{Fragments/fragments::meta}"></head>
 
 <body>
     <main>
@@ -41,21 +26,21 @@
             <div class="card mx-auto card-login">
                 <div class="card-body">
                     <h4 class="card-title mb-4">Sign in</h4>
-                    <form th:action="@{/admin/authenticate}" method="post">
+                    <form th:action="@{/authenticate}" method="post">
                         <div class="mb-3">
                             <input type="text" placeholder="email" class="form-control" name="username" th:value="${username}">
                         </div>
 
                         <div class="mb-3 d-flex">
                             <input type="text" placeholder="OTP" class="form-control col-sm mr-10" id="otp" name="otp">
-                            <button type="submit" class="btn btn-primary mb-2" th:formaction="@{/admin/send-otp}">Send OTP</button>
+                            <button type="submit" class="btn btn-primary mb-2" th:formaction="@{/send-otp}">Send OTP</button>
                         </div>
                         <div class="mb-3">
                             <input class="form-control" placeholder="Password" type="password" id="password" name="password">
                         </div> <!-- form-group// -->
 
                         <div class="mb-3">
-                            <button th:formaction="@{/admin/forgot-password}" class="float-end font-sm text-muted">Forgot password?</button>
+                            <button th:formaction="@{/forgot-password}" class="float-end font-sm text-muted">Forgot password?</button>
                             <label class="form-check">
                                 <input type="checkbox" class="form-check-input" checked="">
                                 <span class="form-check-label">Remember</span>

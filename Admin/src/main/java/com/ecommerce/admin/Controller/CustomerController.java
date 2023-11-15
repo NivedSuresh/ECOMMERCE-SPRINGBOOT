@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@RequestMapping("/admin/customers")
+@RequestMapping("/customers")
 @Controller
 public class CustomerController {
 
@@ -37,7 +37,7 @@ public class CustomerController {
         if(customerService.existsById(id))
             customerService.blockCustomer(id);
 
-        return "redirect:/admin/customers";
+        return "redirect:/customers";
     }
 
     @PostMapping("/unblock/{id}")
@@ -45,20 +45,20 @@ public class CustomerController {
         if(customerService.existsById(id)){
             customerService.unBlockCustomer(id);
         }
-        return "redirect:/admin/customers";
+        return "redirect:/customers";
     }
 
     @PostMapping("/enable-referral")
     public String enableReferral(RedirectAttributes redirectAttributes){
         taskOfferService.enabledOrDisable("REFERRAL", true);
         redirectAttributes.addAttribute("info", "Referral Offer has been enabled for your website!");
-        return "redirect:/admin/customers";
+        return "redirect:/customers";
     }
     @PostMapping("/disable-referral")
     public String disableReferral(RedirectAttributes redirectAttributes){
         taskOfferService.enabledOrDisable("REFERRAL", false);
         redirectAttributes.addAttribute("info", "Referral Offer has been disabled for your website!");
-        return "redirect:/admin/customers";
+        return "redirect:/customers";
     }
 
 

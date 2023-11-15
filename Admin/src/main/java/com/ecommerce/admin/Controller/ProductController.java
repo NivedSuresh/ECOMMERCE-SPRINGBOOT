@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-@RequestMapping("/admin/products")
+@RequestMapping("/products")
 @Controller
 public class ProductController {
 
@@ -51,7 +51,7 @@ public class ProductController {
 
         if(name == null){
             if(Objects.equals(category, "all-category"))
-                return "redirect:/admin/products";
+                return "redirect:/products";
                 else{
                 model.addAttribute("products", productService.findByCategory(category));
                 return "/PostAuth/allProducts";
@@ -89,11 +89,11 @@ public class ProductController {
     public String updateProduct(@PathVariable("id") Long id, @Valid  Product product,
                                 BindingResult result, @RequestParam(value = "onSale", required = false) boolean onSale){
         if(result.hasErrors()){
-            return "redirect:/admin/products/edit/"+id+"?error";
+            return "redirect:/products/edit/"+id+"?error";
         }
         product.setOnSale(onSale);
         productService.saveTextBasedData(id, product);
-        return "redirect:/admin/products/edit/"+id+"?success";
+        return "redirect:/products/edit/"+id+"?success";
     }
 
     @Transactional
@@ -102,9 +102,9 @@ public class ProductController {
                                      @PathVariable("imageUrl") String imageUrl){
 
         if(productService.deleteImageWithIdAndImageUrl(id, Arrays.asList(imageUrl))){
-            return "redirect:/admin/products/edit/"+id+"?deleted";
+            return "redirect:/products/edit/"+id+"?deleted";
         }else{
-            return "redirect:/admin/products/edit/"+id+"?error";
+            return "redirect:/products/edit/"+id+"?error";
         }
 
     }
@@ -112,19 +112,19 @@ public class ProductController {
     @PostMapping("/edit/upload-image/{id}")
     public String uploadNewImage(@PathVariable("id") Long id, @RequestParam("images") List<MultipartFile> images){
         productService.uploadImages(id, images);
-        return "redirect:/admin/products/edit/"+id+"?uploaded";
+        return "redirect:/products/edit/"+id+"?uploaded";
     }
 
     @PostMapping("/disable/{id}")
     public String disableProduct(@PathVariable("id") Long id){
         productService.disableProduct(id);
-        return "redirect:/admin/products";
+        return "redirect:/products";
     }
 
     @PostMapping("/enable/{id}")
     public String enableProduct(@PathVariable("id") Long id){
         productService.enableProduct(id);
-        return "redirect:/admin/products";
+        return "redirect:/products";
     }
 
 }
