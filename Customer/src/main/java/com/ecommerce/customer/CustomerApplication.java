@@ -7,11 +7,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication(scanBasePackages = {"com.ecommerce.library.*",
-        "com.ecommerce.customer.*", "com.ecommerce.products.*"})
+        "com.ecommerce.customer.*"})
 @EnableJpaRepositories(value = {"com.ecommerce.library.Repository.*"})
 @EntityScan(basePackages = {"com.ecommerce.library.Model.User","com.ecommerce.library.Model.Utils"})
 public class CustomerApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(CustomerApplication.class, args);
     }
