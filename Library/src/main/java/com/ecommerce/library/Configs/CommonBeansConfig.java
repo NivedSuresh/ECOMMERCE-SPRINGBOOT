@@ -13,7 +13,6 @@ public class CommonBeansConfig {
     public CsrfTokenRepository csrfTokenRepository() {
         return new HttpSessionCsrfTokenRepository();
     }
-
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){return new BCryptPasswordEncoder();}
 
