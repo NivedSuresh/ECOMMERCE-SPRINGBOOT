@@ -34,13 +34,15 @@ public class AdminSecurityConfiguration {
 
         http.csrf(csrf -> csrf.ignoringRequestMatchers("/search"));
 
-        http.authorizeHttpRequests(authorize -> authorize
-                                .requestMatchers("/css/**", "/fonts/**", "/imgs/**","/js/**","/sass/**", "/product-images",
-                                        "/templates/Fragments/**", "/Fragments/**").permitAll()
-                                .requestMatchers("/admin/send-otp","/admin/forgot-password", "admin/login",
-                                        "/admin/send-token", "/admin/reset-password").permitAll()
-                                .requestMatchers("/admin/forgot-password").permitAll()
-                                .anyRequest().hasAuthority("ADMIN"))
+//        http.authorizeHttpRequests(authorize -> authorize
+//                                .requestMatchers("/static/**","/css/**", "/fonts/**", "/imgs/**","/js/**","/sass/**", "/product-images").permitAll()
+//                                .requestMatchers("/admin/send-otp","/admin/forgot-password", "admin/login",
+//                                        "/admin/send-token", "/admin/reset-password").permitAll()
+//                                .requestMatchers("/admin/forgot-password").permitAll()
+//                                .anyRequest().hasAuthority("ADMIN"))
+
+        http.authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll())
+
 
                 .formLogin(formLogin -> formLogin
                             .loginPage("/admin/login")
