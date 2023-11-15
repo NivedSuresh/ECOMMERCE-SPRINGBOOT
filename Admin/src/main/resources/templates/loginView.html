@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="Fragments/fragments::meta"></head>
+<head th:replace="~{Fragments/fragments::meta}"></head>
 
 <body>
     <main>
@@ -64,9 +64,7 @@
             <p class="font-xs mb-30">All rights reserved</p>
         </footer>
     </main>
-
-    <script th:replace="/Fragments/fragments::script"></script>
-
+    <script th:replace="~{/Fragments/fragments::script}"></script>
 </body>
 
 </html>
