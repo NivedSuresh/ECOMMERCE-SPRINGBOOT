@@ -15,7 +15,7 @@ import java.util.UUID;
 @Component
 public class FileUtil {
 
-    private final String IMAGE_UPLOAD_FOLDER = "/home/ubuntu/Vnilusso/Library/src/main/resources/static/product-images";
+    private final String IMAGE_UPLOAD_FOLDER = "/home/ubuntu/Vnilusso/src/main/resources/product-images";
 
     public List<String> uploadToLocalAndReadyImages(List<MultipartFile> multipartFiles) {
 

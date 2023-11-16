@@ -23,7 +23,8 @@
     <h4>Oops, an error occurred!</h4>
     <p th:text="${errorMsg}"></p>
   </div>
-  <a th:href="@{/}" class="btn btn-primary">Return to Home</a>
+  <a th:authorize="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{/admin/login}" class="btn btn-primary">Return to Dashboard</a>
+  <a th:authorize="${#authorization.expression('hasRole(''CUSTOMER'')')}" th:href="@{/login}" class="btn btn-primary">Return to HOME</a>
 </div>
 
 <!-- Include Bootstrap JS (optional) -->

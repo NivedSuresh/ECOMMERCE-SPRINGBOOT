@@ -54,7 +54,10 @@ public class HomeController {
         return categoryRepo.findAllActiveCategories();
     }
 
-
+    @GetMapping("/static")
+    public String staticPage(){
+        return "redirect:/";
+    }
 
     @GetMapping("/")
     public String homePage(Model model, HttpServletRequest request, Principal principal){
