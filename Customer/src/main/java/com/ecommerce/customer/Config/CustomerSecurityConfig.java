@@ -5,6 +5,7 @@ import com.ecommerce.customer.Handler.OAuthSuccessHandler;
 import com.ecommerce.customer.Security.CustomerDetails;
 import com.ecommerce.library.Dtos.CustomerDto;
 import com.ecommerce.library.Exceptions.InvalidStateException;
+import com.ecommerce.library.Service.AdminService;
 import com.ecommerce.library.Service.CustomerService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,14 +36,16 @@ public class CustomerSecurityConfig {
     CustomSuccessHandler customSuccessHandler;
     OAuthSuccessHandler oAuthSuccessHandler;
     CustomerService customerService;
+    AdminService adminService;
     PasswordEncoder passwordEncoder;
 
     public CustomerSecurityConfig(CustomSuccessHandler customSuccessHandler, OAuthSuccessHandler oAuthSuccessHandler,
-                                  CustomerService customerService, PasswordEncoder passwordEncoder) {
+                                  CustomerService customerService, PasswordEncoder passwordEncoder, AdminService adminService) {
         this.customSuccessHandler = customSuccessHandler;
         this.oAuthSuccessHandler = oAuthSuccessHandler;
         this.customerService = customerService;
         this.passwordEncoder = passwordEncoder;
+        this.adminService = adminService;
     }
 
     @Bean
@@ -95,10 +98,15 @@ public class CustomerSecurityConfig {
             OAuth2User oidcUser = delegate.loadUser(userRequest);
 
             try{
+                if(adminService.adminExists(oidcUser.getAttribute("email"))){
+                    throw new InvalidStateException("","Email already registered with a different role!");
+                }
                 if(!customerService.existsByEmail(oidcUser.getAttribute("email"))){
                     customerService.save(oidcUserToCustomerDto(oidcUser),false);
                 }
             }catch (Exception e){
+                e.printStackTrace();
+                if(e instanceof InvalidStateException) throw e;
                 throw new AuthenticationServiceException("Couldn't complete authorization, try again after some time!");
             }
 

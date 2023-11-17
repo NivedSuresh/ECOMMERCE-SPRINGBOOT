@@ -20,20 +20,16 @@ public class Customer {
     private Long id;
 
     @Column(unique = true)
-    @NotNull(message = "Email cannot be null") @Email(message = "Enter a valid email address")
     private String email;
 
-    @NotNull(message = "Username cannot be null")
+
     private String username;
 
-    @NotNull(message = "Password cannot be null")
     private String password;
 
     @NotNull(message = "User role cannot be null")
     private String role;
 
-    @Pattern(regexp = "\\d{10}", message = "Enter a valid phone number of 10 digits.")
-    @NotNull(message = "Phone number cannot be null")
     private String phoneNumber;
 
     @NotNull(message = "Constraint error, isDeleted was not set during account creation/updation.")

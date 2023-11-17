@@ -42,7 +42,9 @@ public class CartController {
 
         Cart cart = cartService.findByUsername(principal.getName());
         model.addAttribute("cart", cart);
-        model.addAttribute("coupons", couponService.findAvailableForCustomer(cart));
+        if(cart!=null){
+            model.addAttribute("coupons", couponService.findAvailableForCustomer(cart));
+        }
         session.setAttribute("cartSize", cart==null?0:cart.getCartItems().size());
 
         return "/cart";

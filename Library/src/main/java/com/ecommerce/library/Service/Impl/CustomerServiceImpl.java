@@ -71,7 +71,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Transactional
     @Override
-    public void save(CustomerDto customerDto, boolean hashPassword) {
+    public void save(CustomerDto customerDto, boolean hashPasswordBeforeSaving) {
         try{
             Customer customer = customerRepository.findByEmail(customerDto.getEmail());
 
@@ -92,11 +92,11 @@ public class CustomerServiceImpl implements CustomerService {
             customer.setEmail(customerDto.getEmail());
             customer.setUsername(customerDto.getUsername());
 
-            if(hashPassword) customer.setPassword(passwordEncoder.encode
-                                            (customerDto.getPassword()));
-            else customer.setPassword(customerDto.getPassword());
-
-            customer.setPhoneNumber(customerDto.getPhoneNumber());
+            if(!Objects.equals(customer.getRole(), "CUSTOMER")){
+                if(hashPasswordBeforeSaving) customer.setPassword(passwordEncoder.encode
+                        (customerDto.getPassword()));
+                else customer.setPassword(customerDto.getPassword());
+            }
             customerRepository.save(customer);
 
             if(customerDto.getToken()!=null){
