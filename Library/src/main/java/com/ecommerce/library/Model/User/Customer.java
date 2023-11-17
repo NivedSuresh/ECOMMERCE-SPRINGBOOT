@@ -61,5 +61,4 @@ public class Customer {
             inverseJoinColumns = @JoinColumn(name = "coupon_id"))
     private List<Coupon> coupons;
 
-    private Boolean referral;
 }

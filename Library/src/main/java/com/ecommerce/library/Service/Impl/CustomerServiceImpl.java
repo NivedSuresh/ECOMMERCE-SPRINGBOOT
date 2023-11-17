@@ -92,7 +92,7 @@ public class CustomerServiceImpl implements CustomerService {
             customer.setEmail(customerDto.getEmail());
             customer.setUsername(customerDto.getUsername());
 
-            if(!Objects.equals(customer.getRole(), "CUSTOMER")){
+            if(Objects.equals(customer.getRole(), "CUSTOMER")){
                 if(hashPasswordBeforeSaving) customer.setPassword(passwordEncoder.encode
                         (customerDto.getPassword()));
                 else customer.setPassword(customerDto.getPassword());
