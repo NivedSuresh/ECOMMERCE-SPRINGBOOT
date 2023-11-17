@@ -151,7 +151,6 @@
                             <ul>
                                 <li><a class="active" th:href="@{/static}">Home</a></li>
                                 <li><a th:href="@{/shop}">Shop</a></li>
-                                <li><a th:href="@{/contact}">Contact</a></li>
                                 <li sec:authorize="isAuthenticated()"><a th:href="@{/orders}">Orders</a></li>
                                 <li sec:authorize="isAuthenticated()"><a th:href="@{/profile}">Profile</a></li>
                             </ul>
